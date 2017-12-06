@@ -1,0 +1,14 @@
+import csvimport sys
+import reimport os
+import subprocess
+from time import gmtime, strftime
+from pyspark.sql import SparkSession
+from pyspark import SparkContext, SparkConf
+from pyspark.sql import HiveContext,SQLContext
+from pyspark.sql.types import *
+from pyspark.sql.functions import *
+spark = SparkSession.builder.appName("XmlToJson").getOrCreate()
+df = spark.read.format("com.databricks.spark.xml").option("rowTag","PART").load("sample.xml")
+df.printSchema()
+df.show(100)
+df.write.json("JSON")
