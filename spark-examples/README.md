@@ -18,3 +18,6 @@ This will run the application in a single local process.  If the cluster is runn
 cluster manager, you can replace "--master local" with "--master spark://`<master host>`:`<master port>`".
 
 If the cluster is running YARN, you can replace "--master local" with "--master yarn".
+
+Example of running a PySpark application from command line:
+spark2-submit --master local[4] --jars spark-xml_2.11-0.4.1.jar xmlTojson.py
